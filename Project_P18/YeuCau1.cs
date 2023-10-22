@@ -29,7 +29,7 @@ namespace Project_P18
 						a[i, vitri] = 1;
 					}
 				}
-
+				//áđâsđ
 			}
 			return a;
 		}
