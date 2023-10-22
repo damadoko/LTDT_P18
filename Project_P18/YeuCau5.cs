@@ -8,8 +8,20 @@ namespace Project_P18
 {
 	public class YeuCau5
 	{
-		public static void KiemTraDonDoThi()
+		public static bool KiemTraDonDoThi(int[,] matrix)
 		{
+			for (int i = 0; i < matrix.GetLength(0); i++)
+			{
+				for (int j = 0; j < matrix.GetLength(1); j++)
+				{
+					if (YeuCau1.KiemTraDTVH(matrix) && matrix[i, j] != matrix[j, i] || matrix[i, i] != 0)
+					{
+						return false;
+					}
+					else { break; };
+				}
+			}
+			return true;
 		}
 
 		public static bool KiemTraCoPhaiDoThiEuler(int[,] a)

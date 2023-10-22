@@ -8,24 +8,31 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/Users/trietle/.nuget/packages/": {}
+    "C:\\Users\\nntha\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/trietle/Desktop/VB2/HK2/Ly thuyet do thi/Project_P18/Project_P18/Project_P18.csproj",
+      "projectUniqueName": "D:\\LTDT\\Project_git\\Project_P18\\Project_P18.csproj",
       "projectName": "Project_P18",
-      "projectPath": "/Users/trietle/Desktop/VB2/HK2/Ly thuyet do thi/Project_P18/Project_P18/Project_P18.csproj",
-      "packagesPath": "/Users/trietle/.nuget/packages/",
-      "outputPath": "/Users/trietle/Desktop/VB2/HK2/Ly thuyet do thi/Project_P18/Project_P18/obj/",
+      "projectPath": "D:\\LTDT\\Project_git\\Project_P18\\Project_P18.csproj",
+      "packagesPath": "C:\\Users\\nntha\\.nuget\\packages\\",
+      "outputPath": "D:\\LTDT\\Project_git\\Project_P18\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/trietle/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\nntha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -59,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.308/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

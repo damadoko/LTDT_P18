@@ -32,6 +32,38 @@ namespace Project_P18
 			}
 			return a;
 		}
+		public static int[,] XuatMaTran(string filename)
+		{
+			StreamReader file = new StreamReader(filename);
+			string s = file.ReadLine();
+			int n = int.Parse(s);
+			int[,] a = new int[n, n];
+			int vitri;
+			for (int i = 0; i < n; i++)
+			{
+				s = file.ReadLine();
+				string[] m = s.Split(' ');
+				int k = int.Parse(m[0]);
+				if (k != 0)
+				{
+					for (int j = 1; j < 2 * k; j += 2)
+					{
+						vitri = int.Parse(m[j]);
+
+						if (a[i, vitri] == 0 && a[i, vitri] != a[i, i])
+						{
+							a[i, vitri] = int.MaxValue;
+						}
+						else
+						{
+							a[i, vitri] = int.Parse(m[j + 1]);
+						}
+					}
+				}
+
+			}
+			return a;
+		}
 		public static void DocDT(int[,] a)
 		{
 			for (int i = 0; i < a.GetLength(0); i++)
@@ -55,8 +87,6 @@ namespace Project_P18
 					if (a[i, j] != a[j, i])
 					{
 						DTVH = false;
-
-
 					}
 
 				}
