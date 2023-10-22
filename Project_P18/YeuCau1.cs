@@ -10,6 +10,7 @@ namespace Project_P18
 	{
 		public static int[,] KhoiTaoDT(string filename)
 		{
+
 			StreamReader file = new StreamReader(filename);
 			string s = file.ReadLine();
 			int n = int.Parse(s);
