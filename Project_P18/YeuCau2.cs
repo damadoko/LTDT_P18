@@ -8,25 +8,7 @@ namespace Project_P18
 {
 	public class YeuCau2
 	{
-		// Todo: merge with yeu cau 1
-		public static bool KiemTraDTVH(int[,] a)
-		{
-			bool DTVH = true;
-			for (int i = 0; i < a.GetLength(0); i++)
-			{
-
-				for (int j = 0; j < a.GetLength(1); j++)
-				{
-					if (a[i, j] != a[j, i])
-					{
-						DTVH = false;
-						// Return?
-					}
-				}
-			}
-			return DTVH;
-		}
-
+		
 		public static bool KiemTraDinh(int source, int[,] a)
 		{
 			bool isValid = source <= a.GetLength(0);

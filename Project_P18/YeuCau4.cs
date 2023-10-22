@@ -8,7 +8,7 @@ namespace Project_P18
 {
 	public class YeuCau4
 	{
-		public static int[,] ReadMatrix(string filename)
+		/*public static int[,] ReadMatrix(string filename)
 		{
 			if (!File.Exists(filename))
 			{
@@ -29,7 +29,7 @@ namespace Project_P18
 				}
 			}
 			return kq;
-		}
+		}*/
 
 		public static void PrintMatrix(int[,] matrix)
 		{

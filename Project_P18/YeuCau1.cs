@@ -10,7 +10,6 @@ namespace Project_P18
 	{
 		public static int[,] KhoiTaoDT(string filename)
 		{
-
 			StreamReader file = new StreamReader(filename);
 			string s = file.ReadLine();
 			int n = int.Parse(s);
@@ -29,7 +28,6 @@ namespace Project_P18
 						a[i, vitri] = 1;
 					}
 				}
-				//áđâsđ
 			}
 			return a;
 		}
@@ -53,7 +51,7 @@ namespace Project_P18
 
 						if (a[i, vitri] == 0 && a[i, vitri] != a[i, i])
 						{
-							a[i, vitri] = int.MaxValue;
+							a[i, vitri] = int.MaxValue; //???
 						}
 						else
 						{
@@ -61,7 +59,6 @@ namespace Project_P18
 						}
 					}
 				}
-
 			}
 			return a;
 		}
@@ -82,16 +79,13 @@ namespace Project_P18
 			bool DTVH = true;
 			for (int i = 0; i < a.GetLength(0); i++)
 			{
-
 				for (int j = 0; j < a.GetLength(1); j++)
 				{
 					if (a[i, j] != a[j, i])
 					{
 						DTVH = false;
 					}
-
 				}
-
 			}
 			return DTVH;
 		}
@@ -124,7 +118,6 @@ namespace Project_P18
 				{
 					count += DemCanhKhuyen(a);
 				}
-
 			}
 			else
 			{
@@ -151,10 +144,8 @@ namespace Project_P18
 					sum = sum + a[i, j];
 				}
 				b[i] = sum;
-
 			}
 			return b;
-
 		}
 		public static int[] TongBacDinhCoHuong(int[,] a)
 		{
