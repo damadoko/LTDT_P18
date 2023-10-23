@@ -25,8 +25,15 @@ namespace Project_P18
 					for (int j = 1; j < 2 * k; j += 2)
 					{
 						vitri = int.Parse(m[j]);
-						a[i, vitri] = 1;
-					}
+                        if (a[i, vitri] == 1)
+                        {
+                            a[i, vitri] += 1;
+                        }
+                        else
+                        {
+                            a[i, vitri] = 1;
+                        }
+                    }
 				}
 			}
 			return a;
