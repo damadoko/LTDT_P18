@@ -58,7 +58,7 @@ namespace Project_P18
 
 						if (a[i, vitri] == 0 && a[i, vitri] != a[i, i])
 						{
-							a[i, vitri] = int.MaxValue; //???
+							a[i, vitri] = 0; 
 						}
 						else
 						{
