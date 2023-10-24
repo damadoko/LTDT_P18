@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\nntha\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\LTDT\\Project_git\\Project_P18\\Project_P18.csproj",
+      "projectUniqueName": "F:\\1 Hoc Ky III\\Ly Thuyet Do Thi\\Do An LTDT\\Git P18\\LTDT_P18\\Project_P18\\Project_P18.csproj",
       "projectName": "Project_P18",
-      "projectPath": "D:\\LTDT\\Project_git\\Project_P18\\Project_P18.csproj",
-      "packagesPath": "C:\\Users\\nntha\\.nuget\\packages\\",
-      "outputPath": "D:\\LTDT\\Project_git\\Project_P18\\obj\\",
+      "projectPath": "F:\\1 Hoc Ky III\\Ly Thuyet Do Thi\\Do An LTDT\\Git P18\\LTDT_P18\\Project_P18\\Project_P18.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "F:\\1 Hoc Ky III\\Ly Thuyet Do Thi\\Do An LTDT\\Git P18\\LTDT_P18\\Project_P18\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\nntha\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -66,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

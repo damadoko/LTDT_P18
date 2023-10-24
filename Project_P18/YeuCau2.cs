@@ -14,7 +14,7 @@ namespace Project_P18
 			bool isValid = source <= a.GetLength(0);
 			if (!isValid)
 			{
-				Console.WriteLine($"Do thi khong co dinh so {source}");
+				Console.WriteLine($"Đo thi nay khong co dinh {source}");
 			}
 			return isValid;
 		}
@@ -29,8 +29,6 @@ namespace Project_P18
 
 		public static void InDPS(int[,] a,int source)
 		{
-			//Console.WriteLine("Nhap dinh bat dau");
-			//int source = Convert.ToInt32(Console.ReadLine());
 			if (!KiemTraDinh(source, a)) return;
 
 			List<int> dinh_da_tham = new List<int>();
@@ -39,7 +37,7 @@ namespace Project_P18
 			DPS(a, source, ref dinh_da_tham, ref da_xet);
 
 			// In cac dinh da tham
-			Console.WriteLine("Giai thuat DPS");
+			Console.WriteLine("- Giai thuat DPS");
 			InCacDinh(dinh_da_tham);
 		}
 
@@ -93,7 +91,7 @@ namespace Project_P18
 			if (!KiemTraDinh(dinh_dang_xet, a)) return;
 
 			List<int> dinh_da_tham = DuyetBFS(a, dinh_dang_xet);
-			Console.WriteLine("Giai thuat BFS");
+			Console.WriteLine("- Giai thuat BFS");
 			InCacDinh(dinh_da_tham);
 		}
 
@@ -124,10 +122,10 @@ namespace Project_P18
 		{
 			List<List<int>> cac_lien_thong = TimThanhPhanLienThong(a);
 
-			Console.WriteLine($"So thanh phan lien thong: {cac_lien_thong.Count}");
+			Console.WriteLine($"- So thanh phan lien thong: {cac_lien_thong.Count}");
 			for (int k = 0; k < cac_lien_thong.Count; k++)
 			{
-				Console.WriteLine($"Thanh phan lien thong thu {k + 1}:");
+				Console.WriteLine($" + Thanh phan lien thong thu {k + 1}:");
 				InCacDinh(cac_lien_thong[k]);
 				Console.WriteLine();
 			}
