@@ -8,30 +8,30 @@ namespace Project_P18
 		static void Main(string[] args)
 		{
 //Cau 1
-			Console.WriteLine("Cau 1: ");
+			Console.WriteLine("CAU 1: ");
 			int[,] a = YeuCau1.KhoiTaoDT(@"D:\\LTDT\test.txt");
 			int[,] kq = YeuCau1.XuatMaTran(@"D:\\LTDT\test.txt");
-			YeuCau4.PrintMatrix(kq);
-			Console.WriteLine("Xuat ma tran: ");
+			//YeuCau4.PrintMatrix(kq); //In ma tran co trong so; 
+			Console.WriteLine("- Xuat ma tran: ");
 			YeuCau1.DocDT(a);
 			YeuCau1.KiemTraDT(a);
-			Console.WriteLine("so dinh cua do thi:" + a.GetLength(0));
+			Console.WriteLine("- So dinh cua do thi: " + a.GetLength(0));
 			int count = 0;
 			count = YeuCau1.DemCanh(a);
-			Console.WriteLine("so canh cua do thi:" + count);
+			Console.WriteLine("- So canh cua do thi:" + count);
 			count = YeuCau1.DemCanhBoi(a);
-			Console.WriteLine("so cap dinh xuat hien canh boi:" + count);
+			Console.WriteLine("- So cap dinh xuat hien canh boi:" + count);
 			count = YeuCau1.DemCanhKhuyen(a);
-			Console.WriteLine("So canh khuyen:" + count);
+			Console.WriteLine("- So canh khuyen:" + count);
 			count = YeuCau1.DemDinhTreo(a);
-			Console.WriteLine("So dinh treo:" + count);
+			Console.WriteLine("- So dinh treo:" + count);
 			count = YeuCau1.DemDinhCoLap(a);
-			Console.WriteLine("So dinh co lap:" + count);
+			Console.WriteLine("- So dinh co lap:" + count);
 			YeuCau1.BacDinh(a);
 
 //			//data
 			//YeuCau 2 
-			
+			/*
 			int[,] mock_co_huong =
 			{
 			{0, 0, 1, 0, 0, 0, 0, 0},
@@ -107,9 +107,9 @@ namespace Project_P18
 			};*/
 
 //Cau 2
-			Console.WriteLine();
-			Console.WriteLine("Cau 2: Duyet do thi");
-			Console.WriteLine("Nhap diem bat dau");
+			Console.WriteLine("----------------------------------------------------------------------------");
+			Console.WriteLine("CAU 2: DUYET DO THI ");
+			Console.WriteLine("* Nhap dinh bat dau: ");
 			int source = int.Parse(Console.ReadLine());
 			// A
 			YeuCau2.InDPS(a,source);
@@ -123,7 +123,6 @@ namespace Project_P18
 			{
 				YeuCau2.InLienThong(a);
 			}
-			Console.WriteLine() ;
 			/*
 			int[,] moc_vo_huong_co_trong_so_1 =
 			{
@@ -147,44 +146,40 @@ namespace Project_P18
 			};
 			*/
 //Cau 3	
-			Console.WriteLine();
-			Console.WriteLine("Cau 3: Tim cay khung nho nhat");
-			
+			Console.WriteLine("-----------------------------------------------------------------------");
+			Console.WriteLine("CÂU 3: TIM CAY KHUNG NHO NHAT: ");
 			YeuCau3.Prim(kq, source);
 			YeuCau3.Kruskal(kq);
 
 //Cau 4
-			Console.WriteLine();
-			Console.WriteLine("Cau 4: Tim duong di ngan nhat");
-			//Console.WriteLine("Nhap dinh bat dau: ");
-			//int source4 = int.Parse(Console.ReadLine());
-			
+			Console.WriteLine("-----------------------------------------------------------------------");
+			Console.WriteLine("CÂU 4: TIM DUONG DI NGAN NHAT");
 			//Câu a:Dijkstra
 			if (YeuCau4.TrongSoDuong(kq))
 			{
 				Console.WriteLine("Do thi co trong so duong");
-				Console.WriteLine("Giai thuat Dijsktra");
-				YeuCau4.Dijkstra(kq, source);
+				Console.WriteLine(" Giai thuat Dijsktra");
+				YeuCau4.Dijkstra(kq, source); 
 			}
-			//Cau b : Bellman
 			else
 			{
 				Console.WriteLine("Do thi co trong so am");
+				//Cau b : Bellman
 				Console.WriteLine("Giai thuat Bellman");
 				YeuCau4.Bellman(kq, source);
 			}
 
 //Cau 5
-			Console.WriteLine();
-			Console.WriteLine("Cau 5: Chu trinh hoac duong di Euler");
+			Console.WriteLine("----------------------------------------------------------------------");
+			Console.WriteLine("CAU 5: CHU TRINH EULER");
 			if (YeuCau5.KiemTraDonDoThi(kq))
 			{
-				Console.WriteLine("Do thi la don do thi");
+				Console.WriteLine("Do thi la Don Do Thi");
 				YeuCau5.Euler(kq);
 			}
 			else
 			{
-				Console.WriteLine("Khong phai la don do thi");
+				Console.WriteLine("Khong phai Don Do Thi");
 			}
 		}
 	}

@@ -238,7 +238,7 @@ namespace Project_P18
 						sum = sum + a[i, j];
 					}
 					b[i] = sum;
-					Console.WriteLine($"bac cua dinh {i}:" + b[i]);
+					Console.WriteLine($"- Bac cua dinh {i}:" + b[i]);
 				}
 			}
 			else
@@ -256,7 +256,7 @@ namespace Project_P18
 					}
 					inDinh[i] = insum;
 					outDinh[i] = outsum;
-					Console.WriteLine($"bac cua dinh {i} (" + inDinh[i] + "-" + outDinh[i] + ")");
+					Console.WriteLine($"- Bac cua dinh {i} (" + inDinh[i] + "-" + outDinh[i] + ")");
 				}
 			}
 		}
@@ -264,7 +264,7 @@ namespace Project_P18
 		{
 			if (KiemTraDTVH(a))
 			{
-				Console.WriteLine("Do thi vo huong");
+				Console.WriteLine("Do thi vo huong ");
 			}
 			else
 			{

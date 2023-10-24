@@ -33,7 +33,7 @@ namespace Project_P18
 
 		public static void PrintMatrix(int[,] matrix)
 		{
-			Console.WriteLine("- Ma tran ke:");
+			Console.WriteLine("- Xuat ma tran trong so :");
 			for (int i = 0; i < matrix.GetLength(0); i++)
 			{
 				for (int j = 0; j < matrix.GetLength(1); j++)
@@ -78,21 +78,21 @@ namespace Project_P18
 			bool[] T = new bool[n]; //mang danh dau dinh
 			int[] L = new int[n]; // cost
 			const int vocuc = int.MaxValue;
-			int countT = 0;
-			List<int> PrintPrev = new List<int>();
+			int[] Pre = new int[n]; //dinh ke truoc
 			for (int i = 0; i < n; i++)
 			{
 				T[i] = true; //cac dinh deu thuoc T
 				L[i] = vocuc; //chieu dai = vocuc
+				Pre[i] =-1; //Dinh ke truoc 
 			}
 			L[source] = 0;
+			Pre[source] = source;
+
 			for (int i = 0; i < n; ++i)
 			{
 				int v = TimMin(L, T);
 				int min = L[v];
 				T[v] = false; //loai dinh ra khiu tap T 	
-				PrintPrev.Add(v);
-				countT++;
 				
 				//tim canh ke
 				for (int k = 0; k < n; ++k)
@@ -101,37 +101,26 @@ namespace Project_P18
 						matrix[v, k] + min < L[k] && min != vocuc)
 					{
 						L[k] = matrix[v, k] + min;
+						Pre[k] = v;
 					}
-					/* else if (matrix[v, k]+min != L[k])
-					{
-						
-						// PrintPrev.Remove(countT-1);
-						// countT--;
-					}*/
-					
 				}
 				//Xuat ket qua
 				if (min != vocuc)
 				{
-					Console.Write($"Duong di ngan nhat den {v} :Cost ={min} Path: ");
-					for (int t = 0; t < countT; ++t)
+					Console.Write($"- Duong di ngan nhat tu {source} den {v} :Cost ={min} Path: ");
+					int t = v;
+					Console.Write($"{v}");
+					while (t!=source)
 					{
-						if (t == 0)
-						{
-							Console.Write($"{PrintPrev[t]}");
-						}
-						else if (t > 0 )
-						{
-							
-							Console.Write($"->{PrintPrev[t]}");
-						}
+						Console.Write($"<-{Pre[t]}");
+						t = Pre[t];
+
 					}
 					Console.WriteLine();
 				}
 				else
 				{
-					Console.WriteLine($"Khong co duong di den {v}");
-					PrintPrev.Clear();
+					Console.WriteLine($"- Khong co duong di tu {source} den {v}");				
 				}
 			}
 		}
@@ -192,20 +181,21 @@ namespace Project_P18
 					break;
 				}
 			}
-			Console.WriteLine($"Duong di ngan nhat tu {source} den {source}: ");
-			Console.WriteLine($"Cost=0 Path={source}");
+			Console.Write($"- Duong di ngan nhat tu {source} den {source}: ");
+			Console.Write($"Cost = 0   Path = {source}");
+			Console.WriteLine();
 			for (int j = 0; j < n; ++j)
 			{
 				if (Cost[step, j] == vocuc)
 				{
-					Console.WriteLine($"Khong co duong di tu {source} den {j}");
+					Console.WriteLine($"- Khong co duong di tu {source} den {j}");
 				}
 				else if (j != source)
 				{
-					int dest = j; //1;
-					Console.WriteLine($"Duong di ngan nhat tu {source} den {dest}: ");
+					int dest = j; 
+					Console.Write($"- Duong di ngan nhat tu {source} den {dest}: ");
 					Console.Write($"Cost = {Cost[step, j]} ");
-					Console.Write($"Path = {dest}");
+					Console.Write($"  Path = {dest}");
 					int flag = -1;
 					for (int i = step - 1; i > 0; --i)
 					{

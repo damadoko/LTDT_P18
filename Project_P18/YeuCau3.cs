@@ -11,8 +11,8 @@ namespace Project_P18
 		public static void Prim(int[,] a, int diem_dau)
 		{
 			int so_dinh = a.GetLength(0);
-			Console.WriteLine("Giai thuat Prim");
-			Console.WriteLine("Tap canh cua cay khung");
+			Console.WriteLine("- Giai thuat Prim");
+			Console.WriteLine(" + Tap canh cua cay khung");
 
 			List<int> cac_dinh_chua_xet = new List<int>();
 			// Fullfil cac dinh chua xet
@@ -56,9 +56,9 @@ namespace Project_P18
 				trong_so_cay_khung += trong_so_nho_nhat;
 				so_lan_lap++;
 
-				Console.WriteLine($"{canh_nho_nhat[0]}-{canh_nho_nhat[1]}: {trong_so_nho_nhat}");
+				Console.WriteLine($"   {canh_nho_nhat[0]}-{canh_nho_nhat[1]}: {trong_so_nho_nhat}");
 			}
-			Console.WriteLine($"Trong so cua cay khung: {trong_so_cay_khung}");
+			Console.WriteLine($" + Trong so cua cay khung: {trong_so_cay_khung}");
 		}
 
 		public static void Kruskal(int[,] a)
@@ -98,8 +98,8 @@ namespace Project_P18
 				mask[i] = i;
 			}
 
-			Console.WriteLine("Giai thuat Kruskal");
-			Console.WriteLine("Tap canh cua cay khung");
+			Console.WriteLine("- Giai thuat Kruskal");
+			Console.WriteLine(" + Tap canh cua cay khung");
 
 			int trong_so_cay_khung = 0;
 			int so_lan_lap = 0;
@@ -124,7 +124,7 @@ namespace Project_P18
 				if (!co_tao_vong_lap)
 				{
 					trong_so_cay_khung += trong_so;
-					Console.WriteLine($"{diem_dau}-{diem_cuoi}: {trong_so}");
+					Console.WriteLine($"   {diem_dau}-{diem_cuoi}: {trong_so}");
 
 					for (int k = 0; k < mask.Length; k++)
 					{
@@ -141,7 +141,7 @@ namespace Project_P18
 					so_lan_lap++;
 				}
 			}
-			Console.WriteLine($"Trong so cua cay khung: {trong_so_cay_khung}");
+			Console.WriteLine($" + Trong so cua cay khung: {trong_so_cay_khung}");
 		}
 	}
 }
