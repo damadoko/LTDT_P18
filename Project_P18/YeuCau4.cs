@@ -93,6 +93,7 @@ namespace Project_P18
 				T[v] = false; //loai dinh ra khiu tap T 	
 				PrintPrev.Add(v);
 				countT++;
+				
 				//tim canh ke
 				for (int k = 0; k < n; ++k)
 				{
@@ -101,6 +102,13 @@ namespace Project_P18
 					{
 						L[k] = matrix[v, k] + min;
 					}
+					/* else if (matrix[v, k]+min != L[k])
+					{
+						
+						// PrintPrev.Remove(countT-1);
+						// countT--;
+					}*/
+					
 				}
 				//Xuat ket qua
 				if (min != vocuc)
@@ -112,8 +120,9 @@ namespace Project_P18
 						{
 							Console.Write($"{PrintPrev[t]}");
 						}
-						else if (t > 0)
+						else if (t > 0 )
 						{
+							
 							Console.Write($"->{PrintPrev[t]}");
 						}
 					}

@@ -55,7 +55,11 @@ namespace Project_P18
 					for (int j = 1; j < 2 * k; j += 2)
 					{
 						vitri = int.Parse(m[j]);
-						a[i, vitri] = int.Parse(m[j + 1]);
+
+						
+						
+							a[i, vitri] = int.Parse(m[j + 1]);
+						
 					}
 				}
 			}
@@ -65,11 +69,14 @@ namespace Project_P18
 		{
 			for (int i = 0; i < a.GetLength(0); i++)
 			{
-				Console.WriteLine("");
+				
 				for (int j = 0; j < a.GetLength(1); j++)
 				{
-					Console.Write(a[i, j]);
+					
+					Console.Write($"{a[i, j]} ");
+
 				}
+				Console.WriteLine("");
 			}
 			Console.WriteLine("");
 		}

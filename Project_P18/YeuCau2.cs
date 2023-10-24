@@ -27,10 +27,10 @@ namespace Project_P18
 			}
 		}
 
-		public static void InDPS(int[,] a)
+		public static void InDPS(int[,] a,int source)
 		{
-			Console.WriteLine("Nhap dinh bat dau");
-			int source = Convert.ToInt32(Console.ReadLine());
+			//Console.WriteLine("Nhap dinh bat dau");
+			//int source = Convert.ToInt32(Console.ReadLine());
 			if (!KiemTraDinh(source, a)) return;
 
 			List<int> dinh_da_tham = new List<int>();
@@ -85,10 +85,11 @@ namespace Project_P18
 			return dinh_da_tham;
 		}
 
-		public static void InBFS(int[,] a)
+		public static void InBFS(int[,] a, int dinh_dang_xet)
 		{
-			Console.WriteLine("Nhap dinh bat dau");
-			int dinh_dang_xet = Convert.ToInt32(Console.ReadLine());
+			//Console.WriteLine("Nhap dinh bat dau");
+			//int dinh_dang_xet = Convert.ToInt32(Console.ReadLine());
+
 			if (!KiemTraDinh(dinh_dang_xet, a)) return;
 
 			List<int> dinh_da_tham = DuyetBFS(a, dinh_dang_xet);
