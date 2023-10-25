@@ -1,5 +1,4 @@
 ﻿using Project_P18;
-// using System.Collections.Generic;
 
 
 namespace Project_P18
@@ -10,8 +9,8 @@ namespace Project_P18
 		{
 //Cau 1
 			Console.WriteLine("CAU 1: ");
-			int[,] a = YeuCau1.KhoiTaoDT(@"F:\1 Hoc Ky III\Ly Thuyet Do Thi\Do An LTDT\BT 02 Do an LTDT\Data\DSKe_VD2_a.txt");     // a la ma tran ke dung cho all yeu cau
-			int[,] kq = YeuCau1.XuatMaTran(@"F:\1 Hoc Ky III\Ly Thuyet Do Thi\Do An LTDT\BT 02 Do an LTDT\Data\DSKe_VD2_a.txt");
+			int[,] a = YeuCau1.KhoiTaoDT(@"D:\\LTDT\test.txt");
+			int[,] kq = YeuCau1.XuatMaTran(@"D:\\LTDT\test.txt");
 			//YeuCau4.PrintMatrix(kq); //In ma tran co trong so; 
 			Console.WriteLine("- Xuat ma tran: ");
 			YeuCau1.DocDT(a);
