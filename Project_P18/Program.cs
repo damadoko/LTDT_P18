@@ -1,4 +1,5 @@
 ﻿using Project_P18;
+// using System.Collections.Generic;
 
 
 namespace Project_P18
@@ -9,8 +10,8 @@ namespace Project_P18
 		{
 //Cau 1
 			Console.WriteLine("CAU 1: ");
-			int[,] a = YeuCau1.KhoiTaoDT(@"D:\\LTDT\test.txt");
-			int[,] kq = YeuCau1.XuatMaTran(@"D:\\LTDT\test.txt");
+			int[,] a = YeuCau1.KhoiTaoDT(@"F:\1 Hoc Ky III\Ly Thuyet Do Thi\Do An LTDT\BT 02 Do an LTDT\Data\DSKe_VD2_a.txt");     // a la ma tran ke dung cho all yeu cau
+			int[,] kq = YeuCau1.XuatMaTran(@"F:\1 Hoc Ky III\Ly Thuyet Do Thi\Do An LTDT\BT 02 Do an LTDT\Data\DSKe_VD2_a.txt");
 			//YeuCau4.PrintMatrix(kq); //In ma tran co trong so; 
 			Console.WriteLine("- Xuat ma tran: ");
 			YeuCau1.DocDT(a);
@@ -108,10 +109,10 @@ namespace Project_P18
 			};*/
 
 //Cau 2
-			// An edited thu nghiem
+			
 			Console.WriteLine("----------------------------------------------------------------------------");
 			Console.WriteLine("CAU 2: DUYET DO THI ");
-			Console.WriteLine("* Nhap dinh bat dau: ");
+			Console.Write("* Nhap dinh bat dau: ");
 			int source = int.Parse(Console.ReadLine());
 			// A
 			YeuCau2.InDPS(a,source);
@@ -120,8 +121,8 @@ namespace Project_P18
 			YeuCau2.InBFS(a,source);
 			Console.WriteLine();
 
-			// C
-			if (YeuCau1.KiemTraDTVH(a))
+            // C
+            if (YeuCau1.KiemTraDTVH(a))
 			{
 				YeuCau2.InLienThong(a);
 			}
@@ -150,8 +151,29 @@ namespace Project_P18
 //Cau 3	
 			Console.WriteLine("-----------------------------------------------------------------------");
 			Console.WriteLine("CÂU 3: TIM CAY KHUNG NHO NHAT: ");
-			YeuCau3.Prim(kq, source);
-			YeuCau3.Kruskal(kq);
+
+            List<List<int>> Cac_tp_lien_thong = YeuCau2.TimThanhPhanLienThong(a);
+            int So_TP_LienThong = Cac_tp_lien_thong.Count;
+
+            bool KiemTra_VH_LienThong = false;
+
+            if (YeuCau1.KiemTraDTVH(a) && So_TP_LienThong == 1)
+            {
+				KiemTra_VH_LienThong = true;
+            }
+            
+            if (KiemTra_VH_LienThong)
+			{
+                Console.WriteLine("DO THI VO HUONG LIEN THONG");
+                YeuCau3.Prim(kq, source);
+                YeuCau3.Kruskal(kq);
+            }
+			else
+			{
+                Console.WriteLine("KHONG PHAI DO THI VO HUONG LIEN THONG");
+            }
+			
+			
 
 //Cau 4
 			Console.WriteLine("-----------------------------------------------------------------------");

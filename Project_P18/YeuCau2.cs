@@ -37,7 +37,7 @@ namespace Project_P18
 			DPS(a, source, ref dinh_da_tham, ref da_xet);
 
 			// In cac dinh da tham
-			Console.WriteLine("- Giai thuat DPS");
+			Console.WriteLine("- Giai thuat DFS");
 			InCacDinh(dinh_da_tham);
 		}
 
@@ -121,8 +121,8 @@ namespace Project_P18
 		public static void InLienThong(int[,] a)
 		{
 			List<List<int>> cac_lien_thong = TimThanhPhanLienThong(a);
-
-			Console.WriteLine($"- So thanh phan lien thong: {cac_lien_thong.Count}");
+			
+            Console.WriteLine($"- So thanh phan lien thong: {cac_lien_thong.Count}");
 			for (int k = 0; k < cac_lien_thong.Count; k++)
 			{
 				Console.WriteLine($" + Thanh phan lien thong thu {k + 1}:");
