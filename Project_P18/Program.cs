@@ -10,8 +10,8 @@ namespace Project_P18
             // Yeu cau 1
             Console.WriteLine("CAU 1: ");
 
-            int[,] a = YeuCau1.KhoiTaoDT("test1.txt");
-            int[,] kq = YeuCau1.XuatMaTran("test1.txt");
+            int[,] a = YeuCau1.KhoiTaoDT("test1.txt");// Ma tra ke
+            int[,] kq = YeuCau1.XuatMaTran("test1.txt"); // Ma tra co trong so
             YeuCau1.XuatThongTinDoThi(a);
 
 			//data
@@ -94,24 +94,24 @@ namespace Project_P18
 			Console.WriteLine("----------------------------------------------------------------------------");
 			Console.WriteLine("CAU 2: DUYET DO THI ");
 			Console.Write("* Nhap dinh bat dau: ");
-			int source2 = int.Parse(Console.ReadLine());
-			bool isSource2Valid = YeuCau2.KiemTraDinh(source2, a);
+
+			int source = int.Parse(Console.ReadLine());
+			bool isSourceValid = YeuCau2.KiemTraDinh(source, a);
+			if (!isSourceValid) return;
 
 			// Yeu cau 2: Chi chay khi source valid (dinh bat dau co ton tai)
-            if (isSource2Valid) {
-				// 2.a
-				YeuCau2.InDFS(a,source2);
-				Console.WriteLine();
+			// 2.a
+			YeuCau2.InDFS(a,source);
+			Console.WriteLine();
 
-				// 2.b
-				YeuCau2.InBFS(a,source2);
-				Console.WriteLine();
+			// 2.b
+			YeuCau2.InBFS(a,source);
+			Console.WriteLine();
 
-				// 2.c
-				if (YeuCau1.KiemTraDTVH(a))
-				{
-					YeuCau2.InLienThong(a);
-				}
+			// 2.c
+			if (YeuCau1.KiemTraDTVH(a))
+			{
+				YeuCau2.InLienThong(a);
 			}
             /*
 			int[,] moc_vo_huong_co_trong_so_1 =
@@ -153,61 +153,42 @@ namespace Project_P18
 			if (KiemTra_VH_LienThong)
 			{
 				Console.WriteLine("DO THI VO HUONG LIEN THONG");
-				Console.Write("* Nhap dinh bat dau: ");
-				int source3 = int.Parse(Console.ReadLine());
-				bool isSource3Valid = YeuCau2.KiemTraDinh(source3, a);
-				if (isSource3Valid)
-				{ 
-					YeuCau3.Prim(kq, source3);
-					YeuCau3.Kruskal(kq);
-				}
-				else
-				{
-					Console.WriteLine("KHONG PHAI DO THI VO HUONG LIEN THONG");
-				}
+				YeuCau3.Prim(kq, source);
+				YeuCau3.Kruskal(kq);
+			}
+			else
+			{
+				Console.WriteLine("KHONG PHAI DO THI VO HUONG LIEN THONG");
 			}
 
 
 			Console.WriteLine("-----------------------------------------------------------------------");
 			Console.WriteLine("CÂU 4: TIM DUONG DI NGAN NHAT");
-            Console.Write("* Nhap dinh bat dau: ");
-            int source4 = int.Parse(Console.ReadLine());
-            bool isSource4Valid = YeuCau2.KiemTraDinh(source4, a);
 
             // Yeu cau 4: Chi chay khi source valid (dinh bat dau co ton tai)
-            if (isSource4Valid)
-			{ 
-				// 4.a: Dijkstra
-				if (YeuCau4.TrongSoDuong(kq))
-				{
-					Console.WriteLine("Do thi co trong so duong");
-					Console.WriteLine(" Giai thuat Dijsktra");
-					YeuCau4.Dijkstra(kq, source4); 
-				}
-				// 4.b: Bellman
-				else
-				{
-					Console.WriteLine("Do thi co trong so am");
-					Console.WriteLine("Giai thuat Bellman");
-					YeuCau4.Bellman(kq, source4);
-				}
+			// 4.a: Dijkstra
+			if (YeuCau4.TrongSoDuong(kq))
+			{
+				Console.WriteLine("Do thi co trong so duong");
+				Console.WriteLine(" Giai thuat Dijsktra");
+				YeuCau4.Dijkstra(kq, source); 
+			}
+			// 4.b: Bellman
+			else
+			{
+				Console.WriteLine("Do thi co trong so am");
+				Console.WriteLine("Giai thuat Bellman");
+				YeuCau4.Bellman(kq, source);
 			}
 
 			Console.WriteLine("----------------------------------------------------------------------");
 			Console.WriteLine("CAU 5: CHU TRINH EULER");
 
             // Yeu cau 5: Chi chay khi source valid (dinh bat dau co ton tai) va do thi la don do thi
-			if (YeuCau5.KiemTraDonDoThi(kq))
+			if (YeuCau5.KiemTraDonDoThi(a))
 			{
 				Console.WriteLine("Do thi la Don Do Thi");
-				Console.Write("* Nhap dinh bat dau: ");
-				int source5 = int.Parse(Console.ReadLine());
-				bool isSource5Valid = YeuCau2.KiemTraDinh(source5, a);
-
-				if (isSource5Valid)
-				{
-					YeuCau5.Euler(kq, source5);
-				}
+				YeuCau5.Euler(a, source);
 			}
 			else
 			{
