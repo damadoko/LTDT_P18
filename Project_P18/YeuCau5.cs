@@ -148,14 +148,12 @@ namespace Project_P18
 			return cac_dinh_da_xet;
 		}
 
-		public static void Euler(int[,] a)
+		public static void Euler(int[,] a, int source)
 		{
-			Console.WriteLine("Nhap diem dau");
-			int diem_dau = Convert.ToInt16(Console.ReadLine());
 			bool co_phai_do_thi_Euler = KiemTraCoPhaiDoThiEuler(a);
 
 			if (!co_phai_do_thi_Euler) return;
-			List<int> chuoi_dinh_euler = TimChuoiDinhEuler(a, diem_dau);
+			List<int> chuoi_dinh_euler = TimChuoiDinhEuler(a, source);
 
 			// In
 			if (chuoi_dinh_euler.Count == 0)
