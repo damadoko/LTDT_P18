@@ -7,12 +7,20 @@ namespace Project_P18
 	{
 		static void Main(string[] args)
 		{
-            // Yeu cau 1
-            Console.WriteLine("CAU 1: ");
+			//Nhập file path: 
+			const string file = "D:\\LTDT\\DanhSachKe_DDT.txt";
+			//Hàm kiểm tra file 
+			if (!File.Exists(file))
+			{
+				Console.WriteLine("Nhập sai file. Hãy nhập lại");
+				return;
+			}
 
-            int[,] a = YeuCau1.KhoiTaoDT("test1.txt");// Ma tra ke
-            int[,] kq = YeuCau1.XuatMaTran("test1.txt"); // Ma tra co trong so
-            YeuCau1.XuatThongTinDoThi(a);
+			// Yeu cau 1
+			Console.WriteLine("CAU 1: ");
+            int[,] a = YeuCau1.KhoiTaoDT(file);// Ma trận kề
+            int[,] kq = YeuCau1.XuatMaTran(file); // Ma trận có trọng số sử dụng cho Câu 3 và Câu 4
+            YeuCau1.XuatThongTinDoThi(a); //In ma trận kề của Câu 1 
 
 			//data
 			//YeuCau 2 
