@@ -9,37 +9,61 @@ namespace Project_P18
 	public class YeuCau1
 	{
 		public static int[,] KhoiTaoDT(string filename)
+			//Hàm khởi tạo ma trận kề của đồ thị
 		{
 			string path = Path.Combine(Directory.GetCurrentDirectory(), filename);
-            StreamReader file = new StreamReader(path);
+			StreamReader file = new StreamReader(path);
+			//Theo cấu tạo của file đọc thì dòng đầu tiên là số lượng đỉnh của đồ thị
 			int so_dinh = int.Parse(file.ReadLine());
-
 			int[,] ma_tran = new int[so_dinh, so_dinh];
-			int vitri;
-			for (int i = 0; i < so_dinh; i++)
+            //Ma trận kề có kích thước nxn (n là số đỉnh) nên khởi tạo ma trận có kích thước tương ứng
+            int vitri;
+            //cấu trúc file danh sách kề
+			/*
+			6
+            3 0 4 1 7 4 8
+			3 0 7 2 3 4 6
+			2 1 3 3 4
+			4 2 4 4 2 4 5 5 4
+			4 0 8 1 6 3 2 3 5
+			1 3 4*/
+
+            for (int i = 0; i < so_dinh; i++)
 			{
 				string line = file.ReadLine()!;
 				string[] m = line.Split(' ');
 				int so_canh_cua_dinh_i = int.Parse(m[0]);
+				//gán phần tử đầu hàng - là số lượng cạnh của đỉnh đó.
 				if (so_canh_cua_dinh_i == 0) continue;
-
-				for (int j = 1; j < 2 * so_canh_cua_dinh_i; j += 2)
+                //nếu số cạnh của đỉnh =0 thì bỏ qua 
+                //nếu >0 thì tiếp tục gán vào ma trận
+                for (int j = 1; j < 2 * so_canh_cua_dinh_i; j += 2)
 				{
 					vitri = int.Parse(m[j]);
-                    if (ma_tran[i, vitri] == 1)
-                    {
-                        ma_tran[i, vitri] += 1;
-                    }
-                    else
-                    {
-                        ma_tran[i, vitri] = 1;
-                    }
+					//gán các giá trị ở vị trí mang ý nghĩa là đỉnh vào biến vị trí. là các vị trí 1-3-5-...
+					if (ma_tran[i, vitri] == 1)//nếu ma trận ở vị trí đó đã =1 , thì + thêm 1 ( trường hợp cạnh bội)
+					{
+						ma_tran[i, vitri] += 1;
+					}
+					else//nếu ma trận vị trí đó khác 1 , thì cho =1 (thể hiện có cạnh từ đỉnh i bắt đầu đến đỉnh đó)
+					{
+						ma_tran[i, vitri] = 1;
+					}
 				}
 			}
 			return ma_tran;
-		}
-
+		}		
 		public static int[,] XuatMaTran(string filename)
+			//Hàm khởi tạo ma trận kề trọng số
+			//cấu trúc của ma trận kề trọng số (nếu có cạnh tại 2 đỉnh thì tại vị trí 2(i,j) đỉnh đó sẽ có trọng số, còn lại sẽ =0)
+			/*
+			 4 7 0 0 8 0
+			 7 0 3 0 6 0
+			 0 3 0 4 0 0
+			 0 0 4 0 5 4
+			 8 6 0 5 0 0
+			 0 0 0 4 0 0
+			 */
 		{
 			StreamReader file = new StreamReader(filename);
 			string s = file.ReadLine();
@@ -51,12 +75,17 @@ namespace Project_P18
 				s = file.ReadLine();
 				string[] m = s.Split(' ');
                 int so_canh_cua_dinh_i = int.Parse(m[0]);
+                //gán phần tử đầu hàng - là số lượng cạnh của đỉnh đó.
                 if (so_canh_cua_dinh_i == 0) continue;
+                //nếu số cạnh của đỉnh =0 thì bỏ qua 
+                //nếu >0 thì tiếp tục gán vào ma trận
 
                 for (int j = 1; j < 2 * so_canh_cua_dinh_i; j += 2)
 				{
 					vitri = int.Parse(m[j]);
-					a[i, vitri] = int.Parse(m[j + 1]);
+                    //gán các giá trị ở vị trí mang ý nghĩa là đỉnh vào biến vị trí. là các vị trí 1-3-5-...
+                    a[i, vitri] = int.Parse(m[j + 1]);
+					//Gán các trọng số vào vị trí cạnh của 2 đỉnh .vị trí trọng số 2-4-6...
 				}
 			}
 			return a;
