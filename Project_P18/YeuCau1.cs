@@ -10,34 +10,35 @@ namespace Project_P18
 	{
 		public static int[,] KhoiTaoDT(string filename)
 		{
-			StreamReader file = new StreamReader(filename);
-			string s = file.ReadLine();
-			int n = int.Parse(s);
-			int[,] a = new int[n, n];
+			string path = Path.Combine(Directory.GetCurrentDirectory(), filename);
+            StreamReader file = new StreamReader(path);
+			int so_dinh = int.Parse(file.ReadLine());
+
+			int[,] ma_tran = new int[so_dinh, so_dinh];
 			int vitri;
-			for (int i = 0; i < n; i++)
+			for (int i = 0; i < so_dinh; i++)
 			{
-				s = file.ReadLine();
-				string[] m = s.Split(' ');
-				int k = int.Parse(m[0]);
-				if (k != 0)
+				string line = file.ReadLine()!;
+				string[] m = line.Split(' ');
+				int so_canh_cua_dinh_i = int.Parse(m[0]);
+				if (so_canh_cua_dinh_i == 0) continue;
+
+				for (int j = 1; j < 2 * so_canh_cua_dinh_i; j += 2)
 				{
-					for (int j = 1; j < 2 * k; j += 2)
-					{
-						vitri = int.Parse(m[j]);
-                        if (a[i, vitri] == 1)
-                        {
-                            a[i, vitri] += 1;
-                        }
-                        else
-                        {
-                            a[i, vitri] = 1;
-                        }
+					vitri = int.Parse(m[j]);
+                    if (ma_tran[i, vitri] == 1)
+                    {
+                        ma_tran[i, vitri] += 1;
+                    }
+                    else
+                    {
+                        ma_tran[i, vitri] = 1;
                     }
 				}
 			}
-			return a;
+			return ma_tran;
 		}
+
 		public static int[,] XuatMaTran(string filename)
 		{
 			StreamReader file = new StreamReader(filename);
@@ -49,56 +50,90 @@ namespace Project_P18
 			{
 				s = file.ReadLine();
 				string[] m = s.Split(' ');
-				int k = int.Parse(m[0]);
-				if (k != 0)
-				{
-					for (int j = 1; j < 2 * k; j += 2)
-					{
-						vitri = int.Parse(m[j]);
+                int so_canh_cua_dinh_i = int.Parse(m[0]);
+                if (so_canh_cua_dinh_i == 0) continue;
 
-						
-						
-							a[i, vitri] = int.Parse(m[j + 1]);
-						
-					}
+                for (int j = 1; j < 2 * so_canh_cua_dinh_i; j += 2)
+				{
+					vitri = int.Parse(m[j]);
+					a[i, vitri] = int.Parse(m[j + 1]);
 				}
 			}
 			return a;
 		}
-		public static void DocDT(int[,] a)
-		{
-			for (int i = 0; i < a.GetLength(0); i++)
-			{
-				
-				for (int j = 0; j < a.GetLength(1); j++)
-				{
-					
-					Console.Write($"{a[i, j]} ");
 
+		// Cau 1: Phan tich thong tin do thi
+		public static void XuatThongTinDoThi(int[,] a)
+		{ 
+			Console.WriteLine("- Xuat ma tran: ");
+            // 1.a Ma tran ke cua do thi:
+            XuatMaTranKe(a);
+
+			// 1.b Xac dinh tinh co huong cua do thi:
+			bool aLaDoThiVoHuong = KiemTraDTVH(a);
+			if (aLaDoThiVoHuong)
+			{
+				Console.WriteLine("Do thi vo huong ");
+			}
+			else
+			{
+				Console.WriteLine("Do thi co huong");
+			}
+			
+            // 1.c
+            Console.WriteLine("- So dinh cua do thi: " + a.GetLength(0));
+
+			// 1.d
+			Console.WriteLine("- So canh cua do thi:" + DemCanh(a));
+
+			// 1.e
+			Console.WriteLine("- So cap dinh xuat hien canh boi:" + DemCanhBoi(a));
+			Console.WriteLine("- So canh khuyen:" + DemCanhKhuyen(a));
+
+			// 1.f
+			Console.WriteLine("- So dinh treo:" + DemDinhTreo(a));
+			Console.WriteLine("- So dinh co lap:" + DemDinhCoLap(a));
+
+            // 1.g
+            XuatBacDinh(a);
+		}
+
+		public static bool KiemTraDTVH(int[,] ma_tran_ke)
+		{
+			for (int i = 0; i < ma_tran_ke.GetLength(0); i++)
+			{
+				for (int j = 0; j < ma_tran_ke.GetLength(1); j++)
+				{
+					// Neu co 1 phan tu co gia tri khong doi xung, ket luan do thi khong vo huong
+					if (ma_tran_ke[i, j] != ma_tran_ke[j, i]) return false;
+				}
+			}
+			return true;
+		}
+
+		static void XuatMaTranKe(int[,] ma_tran_ke)
+		{
+			for (int i = 0; i < ma_tran_ke.GetLength(0); i++)
+			{
+				for (int j = 0; j < ma_tran_ke.GetLength(1); j++)
+				{
+					Console.Write($"{ma_tran_ke[i, j]} ");
 				}
 				Console.WriteLine("");
 			}
 			Console.WriteLine("");
 		}
-		public static bool KiemTraDTVH(int[,] a)
-		{
-			bool DTVH = true;
-			for (int i = 0; i < a.GetLength(0); i++)
-			{
-				for (int j = 0; j < a.GetLength(1); j++)
-				{
-					if (a[i, j] != a[j, i])
-					{
-						DTVH = false;
-					}
-				}
-			}
-			return DTVH;
-		}
-		public static int DemCanhKhuyen(int[,] a)
+
+		static int DemCanhKhuyen(int[,] a)
 		{
 			int count = 0;
-			for (int i = 0; i < a.GetLength(0); i++)
+            // Vi du: {
+            //	{x,1,0}
+            //	{1,x,1}
+            //	{0,1,x}
+            // }
+            // Trong vi du tren, dau x la nhung phan tu dung de xet canh khuyen (a[i,i]) -> dung 1 vong loop
+            for (int i = 0; i < a.GetLength(0); i++)
 			{
 				if (a[i, i] == 1)
 				{
@@ -107,37 +142,41 @@ namespace Project_P18
 			}
 			return count;
 		}
-		public static int DemCanh(int[,] a)
+
+		static int DemCanh(int[,] a)
 		{
 			int count = 0;
 			if (KiemTraDTVH(a))
 			{
-				for (int i = 1; i < a.GetLength(0); i++)
+				for (int i = 0; i < a.GetLength(0); i++)
 				{
-					for (int j = 0; j < i; j++)
+					// Chi xet 1/2 ma tran doi voi do thi vo huong:
+					// Vi du: {
+					//	{1,1,0}
+					//	{x,0,1}
+					//	{x,x,0}
+					// }
+					// Trong vi du tren, dau x la nhung phan tu khong xet, tranh bi lap lai do do thi vo huong co tinh doi xung
+					for (int j = 0; j <= i; j++)
 					{
-
 						count += a[i, j];
 					}
-				}
-				if (DemCanhKhuyen(a) > 0)
-				{
-					count += DemCanhKhuyen(a);
 				}
 			}
 			else
 			{
+				// Xet toan bo ma tran doi voi do thi co huong
 				for (int i = 0; i < a.GetLength(0); i++)
 				{
 					for (int j = 0; j < a.GetLength(1); j++)
 					{
-
 						count += a[i, j];
 					}
 				}
 			}
 			return count;
 		}
+		
 		public static int[] BacDinhVoHuong(int[,] a)
 		{
 			int[] b = new int[a.GetLength(0)];
@@ -147,13 +186,17 @@ namespace Project_P18
 				int sum = 0;
 				for (int j = 0; j < a.GetLength(1); j++)
 				{
-					sum = sum + a[i, j];
+					// i la thu tu dinh a[i, j] la so canh noi dinh a den dinh j
+					// sum la tong cac bac dinh cua dinh i
+					// Khong xet a[j, i] vi ma tran do thi vo huong co tinh doi xung
+					sum += a[i, j];
 				}
 				b[i] = sum;
 			}
 			return b;
 		}
-		public static int[] TongBacDinhCoHuong(int[,] a)
+
+		static int[] TongBacDinhCoHuong(int[,] a)
 		{
 			int[] inDinh = new int[a.GetLength(0)];
 			int[] outDinh = new int[a.GetLength(0)];
@@ -164,30 +207,34 @@ namespace Project_P18
 				int outsum = 0;
 				for (int j = 0; j < a.GetLength(1); j++)
 				{
-					insum = insum + a[j, i];
-					outsum = outsum + a[i, j];
+                    // i la thu tu dinh
+                    // insum la tong cac canh di den dinh i -> cong them a[j, i] qua moi lan duyet
+                    // outsum la tong cac canh di ra tu dinh i -> cong them a[i, j] qua moi lan duyet
+                    insum += a[j, i];
+					outsum += a[i, j];
 				}
 				inDinh[i] = insum;
 				outDinh[i] = outsum;
+				// Bac dinh i bang tong cac canh canh vao va canh ra dinh i
 				tongDinh[i] = inDinh[i] + outDinh[i];
 			}
 			return tongDinh;
 		}
 
-		public static int DemDinhTreo(int[,] a)
+		static int DemDinhTreo(int[,] a)
 		{
 			int count = 0;
 			int[] b = new int[a.GetLength(0)];
+			// Tim so bac cua cac dinh tuy theo loai do thi vo huong hay co huong
 			if (KiemTraDTVH(a))
 			{
 				b = BacDinhVoHuong(a);
-
 			}
 			else
 			{
 				b = TongBacDinhCoHuong(a);
-
 			}
+			// Loop qua cac bac dinh, neu co dinh nao bac dinh la 1 thi chinh la dinh treo
 			for (int i = 0; i < a.GetLength(0); i++)
 			{
 				if (b[i] == 1)
@@ -197,21 +244,23 @@ namespace Project_P18
 			}
 			return count;
 		}
-		public static int DemDinhCoLap(int[,] a)
+
+		static int DemDinhCoLap(int[,] a)
 		{
 			int count = 0;
 			int[] b = new int[a.GetLength(0)];
-			if (KiemTraDTVH(a))
+            // Tim so bac cua cac dinh tuy theo loai do thi vo huong hay co huong
+            if (KiemTraDTVH(a))
 			{
 				b = BacDinhVoHuong(a);
-
 			}
 			else
 			{
 				b = TongBacDinhCoHuong(a);
 
 			}
-			for (int i = 0; i < a.GetLength(0); i++)
+            // Loop qua cac bac dinh, neu co dinh nao bac dinh la 0 thi chinh la dinh co lap
+            for (int i = 0; i < a.GetLength(0); i++)
 			{
 				if (b[i] == 0)
 				{
@@ -220,7 +269,8 @@ namespace Project_P18
 			}
 			return count;
 		}
-		public static void BacDinh(int[,] a)
+
+		static void XuatBacDinh(int[,] a)
 		{
 			if (KiemTraDTVH(a))
 			{
@@ -235,7 +285,7 @@ namespace Project_P18
 						{
 							a[i, j] = a[i, j] * 2;
 						}
-						sum = sum + a[i, j];
+						sum += a[i, j];
 					}
 					b[i] = sum;
 					Console.WriteLine($"- Bac cua dinh {i}:" + b[i]);
@@ -251,8 +301,8 @@ namespace Project_P18
 					int outsum = 0;
 					for (int j = 0; j < a.GetLength(1); j++)
 					{
-						insum = insum + a[j, i];
-						outsum = outsum + a[i, j];
+						insum += a[j, i];
+						outsum += a[i, j];
 					}
 					inDinh[i] = insum;
 					outDinh[i] = outsum;
@@ -260,28 +310,25 @@ namespace Project_P18
 				}
 			}
 		}
-		public static void KiemTraDT(int[,] a)
-		{
-			if (KiemTraDTVH(a))
-			{
-				Console.WriteLine("Do thi vo huong ");
-			}
-			else
-			{
-				Console.WriteLine("Do thi co huong");
-			}
-		}
-		public static int DemCanhBoi(int[,] a)
+
+		static int DemCanhBoi(int[,] a)
 		{
 			int count = 0;
 			if (KiemTraDTVH(a))
 			{
-				for (int i = 1; i < a.GetLength(0); i++)
+				for (int i = 0; i < a.GetLength(0); i++)
 				{
-					for (int j = 0; j < i; j++)
+                    // Chi xet 1/2 ma tran doi voi do thi vo huong:
+                    // Vi du: {
+                    //	{1,1,0}
+                    //	{x,0,1}
+                    //	{x,x,0}
+                    // }
+                    // Trong vi du tren, dau x la nhung phan tu khong xet, tranh bi lap lai do do thi vo huong co tinh doi xung
+                    for (int j = 0; j <= i; j++)
 					{
-
-						if (a[i, j] == 2)
+						// Cap dinh xuat hien canh boi khi co tu 2 canh tro len noi 2 dinh
+						if (a[i, j] >= 2)
 						{
 							count++;
 						}
@@ -290,11 +337,13 @@ namespace Project_P18
 			}
 			else
 			{
+                // Xet toan bo ma tran doi voi do thi co huong
 				for (int i = 0; i < a.GetLength(0); i++)
 				{
-					for (int j = 0; j < a.GetLength(1); j++)
+                    for (int j = 0; j < a.GetLength(1); j++)
 					{
-						if (a[i, j] == 2)
+                        // Cap dinh xuat hien canh boi khi co tu 2 canh tro len noi 2 dinh
+                        if (a[i, j] >= 2)
 							count++;
 					}
 				}

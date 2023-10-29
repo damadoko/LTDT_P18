@@ -7,29 +7,13 @@ namespace Project_P18
 	{
 		static void Main(string[] args)
 		{
-//Cau 1
-			Console.WriteLine("CAU 1: ");
-			int[,] a = YeuCau1.KhoiTaoDT(@"D:\\LTDT\test.txt");
-			int[,] kq = YeuCau1.XuatMaTran(@"D:\\LTDT\test.txt");
-			//YeuCau4.PrintMatrix(kq); //In ma tran co trong so; 
-			Console.WriteLine("- Xuat ma tran: ");
-			YeuCau1.DocDT(a);
-			YeuCau1.KiemTraDT(a);
-			Console.WriteLine("- So dinh cua do thi: " + a.GetLength(0));
-			int count = 0;
-			count = YeuCau1.DemCanh(a);
-			Console.WriteLine("- So canh cua do thi:" + count);
-			count = YeuCau1.DemCanhBoi(a);
-			Console.WriteLine("- So cap dinh xuat hien canh boi:" + count);
-			count = YeuCau1.DemCanhKhuyen(a);
-			Console.WriteLine("- So canh khuyen:" + count);
-			count = YeuCau1.DemDinhTreo(a);
-			Console.WriteLine("- So dinh treo:" + count);
-			count = YeuCau1.DemDinhCoLap(a);
-			Console.WriteLine("- So dinh co lap:" + count);
-			YeuCau1.BacDinh(a);
+            // Yeu cau 1
+            Console.WriteLine("CAU 1: ");
 
-//			
+            int[,] a = YeuCau1.KhoiTaoDT(@"D:\\LTDT\test.txt");
+            int[,] kq = YeuCau1.XuatMaTran(@"D:\\LTDT\test.txt");
+            YeuCau1.XuatThongTinDoThi(a);
+
 			//data
 			//YeuCau 2 
 			/*
@@ -107,20 +91,20 @@ namespace Project_P18
 			{0, 0, 0, 0, 0, 0, 0, 0},
 			};*/
 
-//Cau 2
+			// Yeu cau 2
 			
 			Console.WriteLine("----------------------------------------------------------------------------");
 			Console.WriteLine("CAU 2: DUYET DO THI ");
 			Console.Write("* Nhap dinh bat dau: ");
 			int source = int.Parse(Console.ReadLine());
-			// A
-			YeuCau2.InDPS(a,source);
+			// 2.a
+			YeuCau2.InDFS(a,source);
 			Console.WriteLine();
-			// B
+			// 2.b
 			YeuCau2.InBFS(a,source);
 			Console.WriteLine();
 
-            // C
+            // 2.c
             if (YeuCau1.KiemTraDTVH(a))
 			{
 				YeuCau2.InLienThong(a);

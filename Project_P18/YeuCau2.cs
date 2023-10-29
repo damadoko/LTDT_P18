@@ -27,21 +27,21 @@ namespace Project_P18
 			}
 		}
 
-		public static void InDPS(int[,] a,int source)
+		public static void InDFS(int[,] a,int source)
 		{
 			if (!KiemTraDinh(source, a)) return;
 
 			List<int> dinh_da_tham = new List<int>();
 			bool[] da_xet = new bool[a.GetLength(1)];
 
-			DPS(a, source, ref dinh_da_tham, ref da_xet);
+			DFS(a, source, ref dinh_da_tham, ref da_xet);
 
 			// In cac dinh da tham
 			Console.WriteLine("- Giai thuat DFS");
 			InCacDinh(dinh_da_tham);
 		}
 
-		public static void DPS(int[,] a, int dinh_hien_tai, ref List<int> dinh_da_tham, ref bool[] da_xet)
+		public static void DFS(int[,] a, int dinh_hien_tai, ref List<int> dinh_da_tham, ref bool[] da_xet)
 		{
 			da_xet[dinh_hien_tai] = true;
 			dinh_da_tham.Add(dinh_hien_tai);
@@ -50,7 +50,7 @@ namespace Project_P18
 			{
 				if (a[dinh_hien_tai, dinh_tiep_theo] == 1 && !da_xet[dinh_tiep_theo])
 				{
-					DPS(a, dinh_tiep_theo, ref dinh_da_tham, ref da_xet);
+					DFS(a, dinh_tiep_theo, ref dinh_da_tham, ref da_xet);
 				}
 			}
 		}
@@ -85,9 +85,6 @@ namespace Project_P18
 
 		public static void InBFS(int[,] a, int dinh_dang_xet)
 		{
-			//Console.WriteLine("Nhap dinh bat dau");
-			//int dinh_dang_xet = Convert.ToInt32(Console.ReadLine());
-
 			if (!KiemTraDinh(dinh_dang_xet, a)) return;
 
 			List<int> dinh_da_tham = DuyetBFS(a, dinh_dang_xet);
