@@ -185,10 +185,10 @@ namespace Project_P18
 			Console.WriteLine("CAU 5: CHU TRINH EULER");
 
             // Yeu cau 5: Chi chay khi source valid (dinh bat dau co ton tai) va do thi la don do thi
-			if (YeuCau5.KiemTraDonDoThi(kq))
+			if (YeuCau5.KiemTraDonDoThi(a))
 			{
 				Console.WriteLine("Do thi la Don Do Thi");
-				YeuCau5.Euler(kq, source);
+				YeuCau5.Euler(a, source);
 			}
 			else
 			{
