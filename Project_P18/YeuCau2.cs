@@ -17,7 +17,7 @@ namespace Project_P18
 			bool isValid = source <= a.GetLength(0);
 			if (!isValid)
 			{
-				Console.WriteLine($"Đo thi nay khong co dinh {source}");
+				Console.WriteLine($"Do thi nay khong co dinh {source}");
 			}
 			return isValid;
 		}
