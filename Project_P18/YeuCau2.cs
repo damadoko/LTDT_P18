@@ -66,7 +66,7 @@ namespace Project_P18
 			{
 				// Neu dinh hien tai va dinh tiep theo (dinh dang duyet) co ton tai canh noi
 				// Va dinh tiep theo khong nam trong danh sach dinh da xet;
-				if (a[dinh_hien_tai, dinh_tiep_theo] == 1 && !dinh_da_xet[dinh_tiep_theo])
+				if (a[dinh_hien_tai, dinh_tiep_theo] >0 && !dinh_da_xet[dinh_tiep_theo])
 				{
                     // Tiep tuc chay recursive, cac tham so a, dinh_da_tham, dinh_da_xet van giu nhu cu 
                     // Params dinh_hien_tai se la dinh_tiep_theo

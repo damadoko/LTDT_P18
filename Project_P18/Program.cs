@@ -8,11 +8,11 @@ namespace Project_P18
 		static void Main(string[] args)
 		{
 			//Nhập file path: 
-			const string file = "D:\\LTDT\\DanhSachKe_DDT.txt";
+			const string file = "D:\\LTDT\\Test\\Cau2VD3.txt";
 			//Hàm kiểm tra file 
 			if (!File.Exists(file))
 			{
-				Console.WriteLine("Nhập sai file. Hãy nhập lại");
+				Console.WriteLine("Nhap sai file, hay nhap lai");
 				return;
 			}
 
@@ -21,83 +21,6 @@ namespace Project_P18
             int[,] a = YeuCau1.KhoiTaoDT(file);// Ma trận kề
             int[,] kq = YeuCau1.XuatMaTran(file); // Ma trận có trọng số sử dụng cho Câu 3 và Câu 4
             YeuCau1.XuatThongTinDoThi(a); //In ma trận kề của Câu 1 
-
-			//data
-			//YeuCau 2 
-			/*
-			int[,] mock_co_huong =
-			{
-			{0, 0, 1, 0, 0, 0, 0, 0},
-			{1, 0, 0, 0, 0, 0, 0, 0},
-			{0, 1, 0, 1, 0, 0, 0, 0},
-			{0, 0, 0, 0, 1, 1, 1, 0},
-			{0, 0, 0, 0, 0, 1, 0, 0},
-			{0, 0, 0, 0, 0, 0, 0, 0},
-			{0, 0, 0, 0, 0, 0, 0, 0},
-			{1, 0, 0, 0, 0, 0, 1, 0},
-			};
-			/*
-			// Khong euler
-			int[,] mock_vo_huong =
-			{
-			{0, 0, 1, 1, 0, 0, 0, 0},
-			{0, 0, 0, 1, 0, 1, 0, 0},
-			{1, 0, 0, 0, 0, 0, 1, 0},
-			{1, 1, 0, 0, 1, 0, 0, 1},
-			{0, 0, 0, 1, 0, 0, 1, 1},
-			{0, 1, 0, 0, 0, 0, 0, 1},
-			{0, 0, 1, 0, 1, 0, 0, 0},
-			{0, 0, 0, 1, 1, 1, 0, 0},
-			};
-
-			// Co euler
-			int[,] mock_vo_huong_co_chu_trinh_euler =
-			{
-			{0, 0, 1, 1, 0, 0, 0, 0},
-			{0, 0, 0, 1, 0, 1, 0, 0},
-			{1, 0, 0, 0, 0, 0, 1, 0},
-			{1, 1, 0, 0, 1, 0, 0, 1},
-			{0, 0, 0, 1, 0, 0, 1, 0},
-			{0, 1, 0, 0, 0, 0, 0, 1},
-			{0, 0, 1, 0, 1, 0, 0, 0},
-			{0, 0, 0, 1, 0, 1, 0, 0},
-			};
-
-			int[,] mock_vo_huong_co_duong_di_euler =
-			{
-			{0, 0, 0, 1, 0, 0, 0, 0},
-			{0, 0, 0, 1, 0, 1, 0, 0},
-			{0, 0, 0, 0, 1, 0, 0, 0},
-			{1, 1, 0, 0, 1, 0, 0, 1},
-			{0, 0, 1, 1, 0, 0, 1, 1},
-			{0, 1, 0, 0, 0, 0, 0, 1},
-			{0, 0, 0, 0, 1, 0, 0, 1},
-			{0, 0, 0, 1, 1, 1, 1, 0},
-			};
-
-			int[,] mock_vo_huong_2_lien_thong =
-			{
-			{0, 0, 1, 0, 0, 1, 1, 0},
-			{0, 0, 0, 0, 0, 1, 0, 0},
-			{1, 0, 0, 0, 0, 0, 0, 0},
-			{0, 0, 0, 0, 0, 0, 0, 1},
-			{0, 0, 0, 0, 0, 1, 0, 0},
-			{1, 1, 0, 0, 1, 0, 0, 0},
-			{1, 0, 0, 0, 0, 0, 0, 0},
-			{0, 0, 0, 1, 0, 0, 0, 0},
-			};
-
-			int[,] mock_vo_huong_2_lien_thong_test =
-			{
-			{0, 0, 1, 0, 0, 1, 1, 0},
-			{0, 0, 0, 0, 0, 1, 0, 0},
-			{1, 0, 0, 0, 0, 0, 0, 0},
-			{0, 0, 0, 0, 0, 0, 0, 0},
-			{0, 0, 0, 0, 0, 1, 0, 0},
-			{1, 1, 0, 0, 1, 0, 0, 0},
-			{1, 0, 0, 0, 0, 0, 0, 0},
-			{0, 0, 0, 0, 0, 0, 0, 0},
-			};*/
 
 			Console.WriteLine("----------------------------------------------------------------------------");
 			Console.WriteLine("CAU 2: DUYET DO THI ");
@@ -121,29 +44,7 @@ namespace Project_P18
 			{
 				YeuCau2.InLienThong(a);
 			}
-            /*
-			int[,] moc_vo_huong_co_trong_so_1 =
-			{
-			{0, 3, 0, 0, 4, 7},
-			{3, 0, 5, 0, 0, 8},
-			{0, 5, 0, 4, 0, 6},
-			{0, 0, 4, 0, 2, 8},
-			{4, 0, 0, 2, 0, 5},
-			{7, 8, 6, 8, 5, 0},
-			};
-
-			int[,] moc_vo_huong_co_trong_so_2 =
-			{
-			{0, 5, 3, 0, 0, 0, 0},
-			{5, 0, 4, 6, 2, 0, 0},
-			{3, 4, 0, 5, 0, 6, 0},
-			{0, 6, 5, 0, 6, 0, 0},
-			{0, 2, 0, 6, 0, 3, 5},
-			{0, 0, 6, 0, 3, 0, 4},
-			{0, 0, 0, 0, 5, 4, 0},
-			};
-			*/
-
+           
 			Console.WriteLine("-----------------------------------------------------------------------");
 			Console.WriteLine("CÂU 3: TIM CAY KHUNG NHO NHAT: ");
 
@@ -168,7 +69,6 @@ namespace Project_P18
 			{
 				Console.WriteLine("KHONG PHAI DO THI VO HUONG LIEN THONG");
 			}
-
 
 			Console.WriteLine("-----------------------------------------------------------------------");
 			Console.WriteLine("CÂU 4: TIM DUONG DI NGAN NHAT");
