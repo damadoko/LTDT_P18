@@ -87,17 +87,25 @@ namespace Project_P18
 		{
 			//Khoi tao cac canh cua do thi
 			List<int[]> cac_canh = new List<int[]>();
-            // Duyet qua tat ca cac dinh de them vao cac_dinh_chua_xet
-            // Chi xet 1/2 ma tran doi voi do thi vo huong:
-            // Vi du: {
-            //	{1,1,0}
-            //	{x,0,1}
-            //	{x,x,0}
-            // }
-            // Trong vi du tren, dau x la nhung phan tu khong xet, tranh bi lap lai do do thi vo huong co tinh doi xung
+			// Duyet qua tat ca cac dinh de them vao cac_dinh_chua_xet
+			// Chi xet 1/2 ma tran doi voi do thi vo huong:
+			// Vi du: {
+			//	{1,x,x}
+			//	{1,0,x}
+			//	{0,1,0}
+			// }
+			// Trong vi du tren, dau x la nhung phan tu khong xet, tranh bi lap lai do do thi vo huong co tinh doi xung
+			// {
+			// {0, 3, 0, 0, 4, 7 },
+			// {3, 0, 5, 0, 0, 8 }
+			// {0, 5, 0, 4, 0, 6 }
+			// {0, 0, 4, 0, 2, 8 }
+			// {4, 0, 0, 2, 0, 5 }
+			// {7, 8, 6, 8, 5, 0 }
+			// }
             for (int i = 0; i < a.GetLength(0); i++)
 			{
-				for (int j = 0; j <= i; j++)
+				for (int j = i; j < a.GetLength(0); j++)
 				{
 					// Neu ton tai canh, thi them vao cac_canh
 					if (a[i, j] != 0)
@@ -166,6 +174,9 @@ namespace Project_P18
                     // Log ra canh va trong so vua tim duoc
                     Console.WriteLine($"   {diem_dau}-{diem_cuoi}: {trong_so}");
 
+					// Store gia tri cua mask diem dau va mask diem cuoi (vi khi loop thi gia tri mask se thay doi)
+					int mask_diem_dau = mask[diem_dau];
+					int mask_diem_cuoi = mask[diem_cuoi];
 					// Duyet qua tat ca cac phan tu cua mask
 					// Update gia tri cua mask, ve mask nho nhat
 					// Vi du:
@@ -173,17 +184,14 @@ namespace Project_P18
 					// Updated mask: {1, 3, 4, 1, 1}
 					for (int k = 0; k < mask.Length; k++)
 					{
-						// Neu mask tai dinh k dang chung voi mask diem_dau va diem_cuoi nho hon diem_dau
-						// Thi updated mask tai dinh k voi gia tri cua mask tai diem_cuoi (update theo mask nho hon)
-						if (mask[k] == mask[diem_dau] && diem_cuoi < diem_dau)
+						// Update mask tai dinh k theo mask nho nhat trong 2 diem dau va diem cuoi
+						if (mask[k] == mask_diem_dau && mask_diem_cuoi < mask_diem_dau)
 						{
-							mask[k] = mask[diem_cuoi];
+							mask[k] = mask_diem_cuoi;
 						}
-						// Neu mask tai dinh k dang chung voi mask diem_cuoi va diem_cuoi lon hon diem_dau
-						// Thi updated mask tai dinh k voi gia tri cua mask tai diem_dau (update theo mask nho hon)
-						else if (mask[k] == mask[diem_cuoi] && diem_cuoi > diem_dau)
+						else if (mask[k] == mask_diem_cuoi && mask_diem_cuoi > mask_diem_dau)
 						{
-							mask[k] = mask[diem_dau];
+							mask[k] = mask_diem_dau;
 						}
 					}
 
