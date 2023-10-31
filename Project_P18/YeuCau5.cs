@@ -27,7 +27,7 @@ namespace Project_P18
 			}
 			return DTT;
 		}
-		//&& matrix[i, j] != matrix[j, i]
+		
 		public static bool KiemTraCoPhaiDoThiEuler(int[,] a)
 		{
 			int so_bac_chan = 0;
