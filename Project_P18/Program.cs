@@ -8,7 +8,7 @@ namespace Project_P18
 		static void Main(string[] args)
 		{
 			//Nhập file path: 
-			const string file = "D:\\LTDT\\Test\\Cau2VD3.txt";
+			const string file = "D:\\LTDT\\Test\\Cau3VD4b.txt";
 			//Hàm kiểm tra file 
 			if (!File.Exists(file))
 			{

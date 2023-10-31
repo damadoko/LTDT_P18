@@ -10,23 +10,24 @@ namespace Project_P18
 	{
 		public static bool KiemTraDonDoThi(int[,] matrix)
 		{
+			bool DTT = true;
 			for (int i = 0; i < matrix.GetLength(0); i++)
 			{
 				for (int j = 0; j < matrix.GetLength(1); j++)
 				{
-					// Neu do thi vo huong va ma tran KHONG co tinh doi xung (matrix[i, j] == matrix[j, i]), 
+					// Neu do thi la do thi co huong  
 					// hoac co canh khuyen (matrix[i, i] != 0)
-					// Thi do thi khong phai don do thi vo huong
-					if (YeuCau1.KiemTraDTVH(matrix) && matrix[i, j] != matrix[j, i] || matrix[i, i] != 0)
+					// hoac co canh boi (matrix [i,j]==2)
+					// Thi do thi khong phai la don do thi
+					if (YeuCau1.KiemTraDTVH(matrix)==false || matrix[i, i] != 0 || matrix[i,j]==2)
 					{
-						return false;
+						return DTT= false;
 					}
-					else { break; };
 				}
 			}
-			return true;
+			return DTT;
 		}
-
+		//&& matrix[i, j] != matrix[j, i]
 		public static bool KiemTraCoPhaiDoThiEuler(int[,] a)
 		{
 			int so_bac_chan = 0;
